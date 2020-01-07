@@ -11,8 +11,8 @@ describe("API - ROUTES", () => {
   it("should add an example", async () => {
     req = {
       body: {
-        text: "text",
-        description: "description"
+        title: "text",
+        body: "description"
       }
     };
 
@@ -21,7 +21,7 @@ describe("API - ROUTES", () => {
     };
 
     await apiRoutes.postExampleApi(req, res);
-    expect(res.json.mock.calls[0][0].text).toBe(req.body.text);
-    expect(res.json.mock.calls[0][0].description).toBe(req.body.description);
+    expect(res.json.mock.calls[0][0].title).toBe(req.body.title);
+    expect(res.json.mock.calls[0][0].body).toBe(req.body.body);
   });
 });
