@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "bloggify_db",
+    "database": "blogs_db",
     "host": "localhost",
     "port": "3306",
     "dialect": "mysql"
@@ -10,7 +10,7 @@
   "test": {
     "username": "root",
     "password": "root",
-    "database": "test_bloggify_db",
+    "database": "test_blogs_db",
     "host": "127.0.0.1",
     "port": "3306",
     "socketPath": "~travis/.my.cnf",

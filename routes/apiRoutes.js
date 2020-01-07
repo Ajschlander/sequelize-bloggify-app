@@ -11,30 +11,16 @@ module.exports = {
       res.redirect("/blogs");
     });
 
-    // Get all examples
-    app.get("/blogs", (req, res) => {});
-
-    // Get an example
-    app.get("/api/examples/:id", function(req, res) {
-      console.log({ id: req.params.id });
-      db.Example.findAll({ where: { id: req.params.id } }).then(function(
-        dbExamples
-      ) {
-        console.log(dbExamples);
-        res.json(dbExamples[0]);
+    // GET ROUTE FOR THE HOME PAGE WITH ALL THE BLOGS IN THE DB
+    app.get("/blogs", (req, res) => {
+      db.Blog.findAll({}).then(blogs => {
+        res.render("index", { blogs: blogs });
       });
     });
 
-    // Create a new example
-    app.post("/api/examples", this.postExampleApi);
-
-    // Delete an example by id
-    app.delete("/api/examples/:id", function(req, res) {
-      db.Example.destroy({ where: { id: req.params.id } }).then(function(
-        dbExample
-      ) {
-        res.json(dbExample);
-      });
+    // NEW ROUTE FOR CREATING A NEW BLOG POST
+    app.get("/blogs/new", (req, res) => {
+      res.render("new");
     });
   }
 };
