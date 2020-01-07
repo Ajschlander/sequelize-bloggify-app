@@ -2,16 +2,17 @@ const db = require("../models");
 
 module.exports = {
   postExampleApi: async function(req, res) {
-    const dbExample = await db.Example.create(req.body);
-    res.json(dbExample);
+    const dbBlog = await db.Blog.create(req.body);
+    res.json(dbBlog);
   },
   api: function(app) {
-    // Get all examples
-    app.get("/api/examples", function(req, res) {
-      db.Example.findAll({}).then(function(dbExamples) {
-        res.json(dbExamples);
-      });
+    // REROUTE TO /BLOGS
+    app.get("/", (req, res) => {
+      res.redirect("/blogs");
     });
+
+    // Get all examples
+    app.get("/blogs", (req, res) => {});
 
     // Get an example
     app.get("/api/examples/:id", function(req, res) {
