@@ -1,15 +1,18 @@
 require("dotenv").config();
-var express = require("express");
-
-var db = require("./models");
-
-var app = express();
-var PORT = process.env.PORT || 3000;
+const express = require("express"),
+  methodOverride = require("method-override"),
+  bodyParser = require("body-parser"),
+  expressSanitizer = require("express-sanitizer"),
+  db = require("./models"),
+  app = express(),
+  PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSanitizer());
+app.use(methodOverride("_method"));
 
 // Routes
 const API = require("./routes/apiRoutes");
