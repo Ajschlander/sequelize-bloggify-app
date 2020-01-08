@@ -41,5 +41,28 @@ module.exports = {
         res.render("show", { blog: foundBlog });
       });
     });
+
+    // EDIT ROUTE
+    app.get("/blogs/:id/edit", (req, res) => {
+      db.Blog.findOne({ where: { id: req.params.id } }).then(foundBlog => {
+        res.render("edit", { blog: foundBlog });
+      });
+    });
+
+    // UPDATE ROUTE
+    app.put("/blogs/:id", (req, res) => {
+      req.body.blog.body = req.sanitize(req.body.blog.body);
+      db.Blog.findOne({ where: { id: req.params.id } }).then(updatedBlog => {
+        updatedBlog
+          .update({
+            title: req.body.blog.title,
+            image: req.body.blog.image,
+            body: req.body.blog.body
+          })
+          .then(() => {
+            res.redirect("/blogs");
+          });
+      });
+    });
   }
 };
