@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   postExampleApi: async function(req, res) {
-    const dbBlog = await db.Blog.create(req.body.blog);
+    const dbBlog = await db.Blog.create(req.body);
     res.json(dbBlog);
   },
   api: function(app) {

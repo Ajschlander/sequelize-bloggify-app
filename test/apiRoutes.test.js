@@ -8,7 +8,7 @@ describe("API - ROUTES", () => {
     req = {};
     res = {};
   });
-  it("should add an example", async () => {
+  it("should add a blog", async () => {
     req = {
       body: {
         title: "text",
