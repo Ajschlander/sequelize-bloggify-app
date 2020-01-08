@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   postExampleApi: async function(req, res) {
-    const dbBlog = await db.Blog.create(req.body);
+    const dbBlog = await db.Blog.create(req.body.blog);
     res.json(dbBlog);
   },
   api: function(app) {
@@ -37,7 +37,7 @@ module.exports = {
 
     // SHOW ROUTE
     app.get("/blogs/:id", (req, res) => {
-      db.Blog.find({ where: { id: req.params.id } }).then(foundBlog => {
+      db.Blog.findOne({ where: { id: req.params.id } }).then(foundBlog => {
         res.render("show", { blog: foundBlog });
       });
     });

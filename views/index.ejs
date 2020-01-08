@@ -10,15 +10,15 @@
                         <img src="<%= blog.image %>">
                     </div>
                     <div class="content">
-                        <a class="header" href="/blogs/<%= blog._id %>"><%= blog.title %></a>
+                        <a class="header" href="/blogs/<%= blog.id %>"><%= blog.title %></a>
                         <div class="meta">
                             <span><%= blog.createdAt %></span>
                         </div>
                         <div class="description">
-                            <p><%= blog.body.substring(0, 100) %>...</p>
+                            <p><%- blog.body.substring(0, 100) %>...</p>
                         </div>
                         <div class="extra">
-                            <a class="ui floated basic green button" href="/blogs/<%= blog._id %>">Read More <i class="chevron right icon"></i></a>
+                            <a class="ui floated basic green button" href="/blogs/<%= blog.id %>">Read More <i class="chevron right icon"></i></a>
                         </div>
                     </div>
                 </div>
