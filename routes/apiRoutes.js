@@ -64,5 +64,12 @@ module.exports = {
           });
       });
     });
+
+    // DESTROY ROUTE
+    app.delete("/blogs/:id", (req, res) => {
+      db.Blog.destroy({ where: { id: req.params.id } }).then(() => {
+        res.redirect("/");
+      });
+    });
   }
 };
