@@ -8,7 +8,11 @@ module.exports = {
   api: function(app) {
     // REROUTE TO /BLOGS
     app.get("/", (req, res) => {
-      res.redirect("/blogs");
+      res.redirect("/signup");
+    });
+
+    app.get("/signup", (req, res) => {
+      res.render("signup");
     });
 
     // GET ROUTE FOR THE HOME PAGE WITH ALL THE BLOGS IN THE DB
