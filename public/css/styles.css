@@ -1,3 +1,15 @@
-.container.main {
+.ui.menu {
+  height: 7em;
+}
+
+.ui.huge.header {
   margin-top: 7em;
+}
+
+.ui.menu .item:before {
+  width: 0px;
+}
+
+.ui.main.text {
+  box-shadow: 10px 10px 18px 0px rgba(0, 0, 0, 0.75);
 }
